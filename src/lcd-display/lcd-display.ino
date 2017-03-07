@@ -16,8 +16,13 @@ void setup() {
 }
 
 void loop() {
-  goToLCDLine(lcd, 1);
-  lcd.print((millis() / 1000) % 15);
+  static int m = 0;
+  int n = (millis() / 1000) % 15;
+  if (m != n) { //only update the LCD when necessary
+    m = n;
+    goToLCDLine(lcd, 1);
+    lcd.print(n);
+  }
 }
 
 void goToLCDLine(LC& lcd, int n)
