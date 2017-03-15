@@ -4,14 +4,17 @@ bool routine(const unsigned long int t, const unsigned int i);
 
 PS2X ps2x;
 
-int status;
+int status = 1;
 
 void setup() {
   Serial.begin(57600);
 
   delay(1000); // the module needs some time to boot up
 
-  status = ps2x.config_gamepad(12, 11, 10, 8, true, true);
+  while (status != 0) {
+    status = ps2x.config_gamepad(12, 11, 10, 8, true, true);
+    delay(300);
+  }
   //the clock(7) pin, command(2) pin, attention(6) pin and the data(1) pin
   //pressure and rumble feature enabled
 
