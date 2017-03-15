@@ -1,2 +1,2 @@
 # exclude ppt temp files
-~\$*.pptx
+slides/~\$*.pptx
